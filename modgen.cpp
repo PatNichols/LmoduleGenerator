@@ -51,6 +51,9 @@ int main(int argc,char **argv)
         famx = options.getValue("family");
         out << "family(" << famx << ")\n"; 
     }    
+    
+    out << "help([[\n help \n]])\n";
+    out << "whatis(\"this\")\n";
 
     out << "local tpath = " << prefx << "\n"; 
     out << "local binpath = " << "pathJoin(tpath,\"/bin\")" << "\n";
@@ -59,11 +62,11 @@ int main(int argc,char **argv)
     out << "prepend_path(CPATH,incpath) \n";
     out << "prepend_path(LIBRARY_PATH,libpath) \n";
     out << "prepend_path(PATH,binpath) \n";
-    out << "prepend_path(LD_LIBRARY_PATH,libpath)\n";
-    out << "prepend_path(INC_NCAR,\"-I \" .. incpath .. \" \")\n";
+//    out << "prepend_path(LD_LIBRARY_PATH,libpath)\n";
+    out << "prepend_path(NCAR_INC_,\"-I \" .. incpath .. \" \")\n";
     out << "local lflags = \"-L\" .. libpath\n";
-    out << "prepend_path(LIB_NCAR,\"-Wl,-rpath \" .. libpath .. lflags)"  << "\n";
-        
+    out << "prepend_path(NCAR_LDFLAGS_,\"-Wl,-rpath \" .. libpath .. lflags)"  << "\n";
+          
     out.close();    
     return EXIT_SUCCESS;
 }     
